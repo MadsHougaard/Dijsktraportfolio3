@@ -1,0 +1,25 @@
+// Dijkstra
+
+while (UnvisitedMap.size() > 0) {                                   // O(n log n) //  
+    Vertex currentVertex = getmin(UnvisitedMap);                    //    O(1)    //
+
+    int currentDistance = UnvisitedMap.get(currentVertex);          //    O(1)    //
+
+    UnvisitedMap.remove(currentVertex);                             //    O(1)    //
+    for(Edge edge : currentVertex.getOutEdges()) {                  //    O(1)    //
+        Vertex neighbourVertex = edge.getTovertex();                //    O(1)    //
+
+        int neighbourDistance = currentDistance + edge.distance;    //    O(1)    //
+
+        if(neighbourDistance < DistanceMap.get(neighbourVertex))    //    O(n)    //
+        {
+            DistanceMap.put(neighbourVertex, neighbourDistance);    //    O(1)    //
+            PredecessorMap.put(neighbourVertex, currentVertex);     //    O(1)    //
+        } 
+
+        if (UnvisitedMap.get(neighbourVertex) != null)              //    O(n)    //
+        {
+            UnvisitedMap.put(neighbourVertex, neighbourDistance);   //    O(1)    //
+        }
+    }
+}
