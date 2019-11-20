@@ -40,9 +40,9 @@ public class Graph {
         // Initialiserer arrays
         for(Vertex v: Vertices)
         {
-            DistanceMap.put(v,1000);
+            DistanceMap.put(v,1000); // En værdi der er så stor at den aldrig nås
             PredecessorMap.put(v, null);
-            UnvisitedMap.put(v, 1000); // Giver os punkter som vi har besøgt
+            UnvisitedMap.put(v, 1000); // En værdi der er så stor at den aldrig nås. Giver os punkter som vi har besøgt
         }
 
         DistanceMap.put(source,0); // lav startpunkt
@@ -91,7 +91,7 @@ public class Graph {
 
     // Returnerer vertex med korteste distance på en vilkårlig liste (Map)
     public Vertex getmin(Map<Vertex,Integer> qmap){
-        int shortestDistance = 9999;
+        int shortestDistance = 9999; // En værdi der er så stor at den aldrig nås
         Vertex shortestVertex = null;
         for (Map.Entry<Vertex, Integer> entry : qmap.entrySet()) 
         {
